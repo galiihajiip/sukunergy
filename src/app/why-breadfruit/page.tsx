@@ -75,13 +75,14 @@ export default function WhyBreadfruit() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="w-full h-96 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-6xl mb-4">🌳</div>
-                    <h3 className="text-2xl font-bold text-green-800 mb-2">Pohon Sukun</h3>
-                    <p className="text-green-700">Artocarpus altilis</p>
-                  </div>
+                <div className="w-full h-96 bg-gray-100 rounded-2xl overflow-hidden">
+                  <img 
+                    src="/images/sukun/pohon-sukun.jpg" 
+                    alt="Pohon Sukun - Artocarpus altilis"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+                <p className="text-sm text-gray-500 text-center mt-2">Pohon Sukun (Artocarpus altilis)</p>
               </div>
               
               <div>

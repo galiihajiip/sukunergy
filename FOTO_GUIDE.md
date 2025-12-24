@@ -21,6 +21,9 @@ public/
 │   │   ├── dewi.jpg               ← CFO - Dewi Berliana Putri
 │   │   └── fathimah.jpg           ← CMO - Fathimah Ummul Banin
 │   │
+│   ├── sukun/                     ← FOTO SUKUN (untuk halaman Mengapa Sukun)
+│   │   └── pohon-sukun.jpg        ← Foto pohon sukun asli
+│   │
 │   ├── hero/                      ← FOTO HERO SECTION
 │   │   └── hero-bg.jpg            ← Background hero (opsional)
 │   │
@@ -48,6 +51,12 @@ public/
   - `galih.jpg` - CTO
   - `dewi.jpg` - CFO
   - `fathimah.jpg` - CMO
+
+### Foto Sukun (Halaman Mengapa Sukun)
+- **Ukuran**: 800x600 px (rasio 4:3 / landscape)
+- **Format**: JPG
+- **Nama file**: `pohon-sukun.jpg`
+- **Lokasi**: `public/images/sukun/`
 
 ### Logo
 - **Ukuran**: 512x512 px
