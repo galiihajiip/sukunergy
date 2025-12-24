@@ -21,6 +21,8 @@ const navigation = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { itemCount } = useCart();
   const pathname = usePathname();
   const router = useRouter();
@@ -36,6 +38,15 @@ export function Header() {
 
   const handleCartClick = () => {
     router.push('/cart');
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      setShowSearch(false);
+      setSearchQuery('');
+    }
   };
 
   return (
@@ -54,12 +65,8 @@ export function Header() {
             href="/"
             className="flex items-center space-x-2 text-xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
-            <div className="w-8 h-8 flex items-center justify-center">
-              <img 
-                src="/favicon.ico" 
-                alt="SUKUNERGY Logo" 
-                className="w-full h-full object-contain"
-              />
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">S</span>
             </div>
             <span className={cn(
               'transition-colors',
@@ -91,16 +98,43 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={cn(
-                'relative',
-                isScrolled ? 'text-gray-700 hover:text-primary' : 'text-white hover:text-primary'
-              )}
-            >
-              <Search className="h-5 w-5" />
-            </Button>
+            {/* Search */}
+            {showSearch ? (
+              <form onSubmit={handleSearch} className="flex items-center">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Cari produk..."
+                  className="px-3 py-1.5 text-sm border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  autoFocus
+                />
+                <Button type="submit" size="sm" className="rounded-l-none">
+                  <Search className="h-4 w-4" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowSearch(false)}
+                  className="ml-1"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </form>
+            ) : (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowSearch(true)}
+                className={cn(
+                  'relative',
+                  isScrolled ? 'text-gray-700 hover:text-primary' : 'text-white hover:text-primary'
+                )}
+              >
+                <Search className="h-5 w-5" />
+              </Button>
+            )}
             
             <Button
               variant="ghost"
@@ -176,6 +210,22 @@ export function Header() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
+              {/* Mobile Search */}
+              <form onSubmit={handleSearch} className="px-3 py-2">
+                <div className="flex items-center">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Cari produk..."
+                    className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <Button type="submit" size="sm" className="rounded-l-none">
+                    <Search className="h-4 w-4" />
+                  </Button>
+                </div>
+              </form>
+
               {navigation.map((item) => (
                 <Link
                   key={item.name}

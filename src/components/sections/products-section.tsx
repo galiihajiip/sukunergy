@@ -123,11 +123,10 @@ export function ProductsSection() {
                 </div>
               </CardContent>
 
-              <CardFooter className="p-4 sm:p-6 pt-0 space-y-2">
+              <CardFooter className="p-4 sm:p-6 pt-0 flex flex-col gap-2">
                 <Button asChild className="w-full text-sm sm:text-base">
                   <Link href={`/products/${product.slug}`}>
-                    <span className="hidden sm:inline">Lihat Detail & Pesan</span>
-                    <span className="sm:hidden">Lihat Detail</span>
+                    Lihat Detail
                   </Link>
                 </Button>
                 <Button
@@ -144,8 +143,7 @@ export function ProductsSection() {
                     );
                   }}
                 >
-                  <span className="hidden sm:inline">Tanya via WhatsApp</span>
-                  <span className="sm:hidden">Tanya WA</span>
+                  Tanya via WA
                 </Button>
               </CardFooter>
             </Card>
