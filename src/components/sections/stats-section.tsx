@@ -3,13 +3,13 @@ import { Users, ShoppingBag, Star, Award } from 'lucide-react';
 const stats = [
   {
     icon: Users,
-    value: '10,000+',
+    value: '100+',
     label: 'Pelanggan Puas',
     description: 'Telah mempercayai SUKUNERGY',
   },
   {
     icon: ShoppingBag,
-    value: '50,000+',
+    value: '500+',
     label: 'Produk Terjual',
     description: 'Bar protein sukun berkualitas',
   },
@@ -17,7 +17,7 @@ const stats = [
     icon: Star,
     value: '4.9/5',
     label: 'Rating Pelanggan',
-    description: 'Berdasarkan 2,500+ ulasan',
+    description: 'Berdasarkan ulasan pelanggan',
   },
   {
     icon: Award,
@@ -33,10 +33,10 @@ export function StatsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Dipercaya oleh Ribuan Pelanggan
+            Dipercaya oleh Pelanggan Kami
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            SUKUNERGY telah menjadi pilihan utama untuk camilan sehat dan bergizi di seluruh Indonesia
+            SUKUNERGY telah menjadi pilihan untuk camilan sehat dan bergizi
           </p>
         </div>
 
