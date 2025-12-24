@@ -132,19 +132,10 @@ export function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
           {teamMembers.map((member) => (
             <TeamMemberCard key={member.id} member={member} />
           ))}
-        </div>
-
-        {/* View Full Team CTA */}
-        <div className="text-center">
-          <Button asChild size="lg" variant="outline">
-            <Link href="/team">
-              Lihat Tim Lengkap
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
