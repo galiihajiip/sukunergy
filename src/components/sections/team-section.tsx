@@ -52,14 +52,29 @@ const teamMembers = [
   },
 ];
 
-function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
+function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <CardContent className="p-6 text-center">
-        {/* Photo Placeholder */}
+        {/* Photo */}
         <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center overflow-hidden border-4 border-primary/10">
-          <span className="text-3xl font-bold text-primary">
-            {member.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+          <img
+            src={member.photo}
+            alt={member.name}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              // Fallback to initials if image fails
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              target.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <span className="hidden text-3xl font-bold text-primary">
+            {member.name
+              .split(' ')
+              .map((n) => n[0])
+              .slice(0, 2)
+              .join('')}
           </span>
         </div>
 
@@ -72,12 +87,8 @@ function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
         <h3 className="text-lg font-semibold text-gray-900 mb-1">
           {member.name}
         </h3>
-        <p className="text-xs text-gray-600 mb-3">
-          {member.programStudi}
-        </p>
-        <p className="text-sm text-gray-500 mb-4">
-          {member.bio}
-        </p>
+        <p className="text-xs text-gray-600 mb-3">{member.programStudi}</p>
+        <p className="text-sm text-gray-500 mb-4">{member.bio}</p>
 
         {/* Instagram Link */}
         {member.instagramUrl && (
