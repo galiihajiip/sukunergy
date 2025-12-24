@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Minus, Plus, ShoppingCart, Star, Shield, Truck, Award } from 'lucide-react';
 import { Header } from '@/components/layout/header';
@@ -15,7 +14,7 @@ import { useCart } from '@/contexts/cart-context';
 import { useToast } from '@/hooks/use-toast';
 import { formatPrice } from '@/lib/utils';
 
-// Mock product data - in real app this would come from database
+// Product data
 const products = [
   {
     id: '1',
@@ -24,14 +23,10 @@ const products = [
     description: 'Bar protein sukun original dengan rasa alami yang kaya protein dan rendah kalori. Dibuat dari sukun pilihan dengan proses yang higienis.',
     longDescription: 'SUKUNERGY Original adalah bar protein sukun pertama di Indonesia yang menggabungkan cita rasa autentik sukun dengan nutrisi lengkap. Setiap batang mengandung 15g protein berkualitas tinggi, 4g serat, dan hanya 130 kalori. Cocok untuk sarapan sehat, camilan pre/post workout, atau sebagai pengganti makanan ringan tidak sehat.',
     images: [
-      '/images/products/original-1.jpg',
-      '/images/products/original-2.jpg',
-      '/images/products/original-3.jpg',
+      '/images/products/sukunergy-original.jpg',
     ],
     variants: [
-      { id: '1-1', name: 'Single Pack', price: 15000, originalPrice: 18000, stock: 50 },
-      { id: '1-2', name: 'Pack 3', price: 40000, originalPrice: 45000, stock: 30 },
-      { id: '1-3', name: 'Pack 6', price: 75000, originalPrice: 90000, stock: 20 },
+      { id: '1-1', name: 'Single Pack', price: 5000, originalPrice: 7000, stock: 50 },
     ],
     badges: ['Bestseller', 'Original'],
     rating: 4.8,
@@ -62,14 +57,10 @@ const products = [
     description: 'Perpaduan sempurna antara sukun dan cokelat premium untuk pengalaman rasa yang tak terlupakan.',
     longDescription: 'SUKUNERGY Chocolate menghadirkan kelezatan cokelat premium yang dipadukan dengan nutrisi sukun. Menggunakan cokelat berkualitas tinggi dan proses yang sempurna, menciptakan rasa yang rich namun tetap sehat. Ideal untuk pecinta cokelat yang ingin tetap menjaga kesehatan.',
     images: [
-      '/images/products/chocolate-1.jpg',
-      '/images/products/chocolate-2.jpg',
-      '/images/products/chocolate-3.jpg',
+      '/images/products/sukunergy-chocolate.jpg',
     ],
     variants: [
-      { id: '2-1', name: 'Single Pack', price: 16000, originalPrice: 19000, stock: 45 },
-      { id: '2-2', name: 'Pack 3', price: 42000, originalPrice: 48000, stock: 25 },
-      { id: '2-3', name: 'Pack 6', price: 78000, originalPrice: 96000, stock: 15 },
+      { id: '2-1', name: 'Single Pack', price: 5000, originalPrice: 7000, stock: 45 },
     ],
     badges: ['New', 'Premium'],
     rating: 4.9,
@@ -100,14 +91,10 @@ const products = [
     description: 'Kombinasi sukun dengan berbagai kacang pilihan untuk tekstur renyah dan nutrisi maksimal.',
     longDescription: 'SUKUNERGY Mixed Nuts adalah varian premium yang menggabungkan sukun dengan berbagai kacang pilihan seperti almond, walnut, dan cashew. Memberikan tekstur renyah yang unik dan nutrisi lengkap dengan lemak sehat, protein, dan mineral penting.',
     images: [
-      '/images/products/mixednuts-1.jpg',
-      '/images/products/mixednuts-2.jpg',
-      '/images/products/mixednuts-3.jpg',
+      '/images/products/sukunergy-mixed-nuts.jpg',
     ],
     variants: [
-      { id: '3-1', name: 'Single Pack', price: 18000, originalPrice: 22000, stock: 35 },
-      { id: '3-2', name: 'Pack 3', price: 48000, originalPrice: 55000, stock: 20 },
-      { id: '3-3', name: 'Pack 6', price: 90000, originalPrice: 110000, stock: 12 },
+      { id: '3-1', name: 'Single Pack', price: 5000, originalPrice: 7000, stock: 35 },
     ],
     badges: ['Premium', 'High Protein'],
     rating: 4.7,
@@ -143,7 +130,6 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const product = products.find(p => p.slug === params.slug);
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const { addItem } = useCart();
   const { toast } = useToast();
 
@@ -213,34 +199,11 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               <div className="space-y-4">
                 {/* Main Image */}
                 <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                  <Image
-                    src={product.images[selectedImageIndex]}
+                  <img
+                    src={product.images[0]}
                     alt={product.name}
-                    width={600}
-                    height={600}
                     className="w-full h-full object-cover"
                   />
-                </div>
-
-                {/* Thumbnail Images */}
-                <div className="flex space-x-4">
-                  {product.images.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedImageIndex(index)}
-                      className={`w-20 h-20 rounded-lg overflow-hidden border-2 ${
-                        selectedImageIndex === index ? 'border-primary' : 'border-gray-200'
-                      }`}
-                    >
-                      <Image
-                        src={image}
-                        alt={`${product.name} ${index + 1}`}
-                        width={80}
-                        height={80}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
                 </div>
               </div>
 
@@ -515,11 +478,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   <Card key={relatedProduct.id} className="group hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-0">
                       <div className="aspect-square bg-gray-100 overflow-hidden rounded-t-lg">
-                        <Image
+                        <img
                           src={relatedProduct.images[0]}
                           alt={relatedProduct.name}
-                          width={400}
-                          height={400}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>

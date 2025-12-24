@@ -1,31 +1,31 @@
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Mock testimonials data
+// Testimonials data
 const testimonials = [
   {
     id: '1',
-    name: 'Sarah Putri',
-    location: 'Jakarta',
+    name: 'Dian Permata',
+    location: 'Surabaya',
     content: 'SUKUNERGY jadi camilan favorit aku! Rasanya enak, mengenyangkan, dan yang paling penting sehat. Cocok banget buat yang lagi program diet seperti aku.',
     rating: 5,
-    image: '/images/testimonials/sarah.jpg',
+    image: '/images/testimonials/dian.jpg',
   },
   {
     id: '2',
-    name: 'Budi Santoso',
-    location: 'Surabaya',
+    name: 'Rizky Pratama',
+    location: 'Sidoarjo',
     content: 'Sebagai atlet, aku butuh asupan protein tinggi. SUKUNERGY memberikan energi yang cukup untuk latihan tanpa bikin perut kembung. Recommended!',
     rating: 5,
-    image: '/images/testimonials/budi.jpg',
+    image: '/images/testimonials/rizky.jpg',
   },
   {
     id: '3',
-    name: 'Maya Sari',
-    location: 'Bandung',
+    name: 'Ayu Lestari',
+    location: 'Gresik',
     content: 'Anak-anak suka banget sama rasa cokelat SUKUNERGY. Akhirnya ada camilan sehat yang disukai anak dan approved sama mamanya. Thank you SUKUNERGY!',
     rating: 5,
-    image: '/images/testimonials/maya.jpg',
+    image: '/images/testimonials/ayu.jpg',
   },
 ];
 

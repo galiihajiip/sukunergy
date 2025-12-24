@@ -6,18 +6,16 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatPrice } from '@/lib/utils';
 
-// Mock data - in real app this would come from database
+// Product data
 const featuredProducts = [
   {
     id: '1',
     name: 'SUKUNERGY Original',
     slug: 'sukunergy-original',
     description: 'Bar sukun original dengan rasa alami yang kaya protein dan rendah kalori.',
-    image: '/images/products/original.jpg',
+    image: '/images/products/sukunergy-original.jpg',
     variants: [
-      { name: 'Single Pack', price: 15000, originalPrice: 18000 },
-      { name: 'Pack 3', price: 40000, originalPrice: 45000 },
-      { name: 'Pack 6', price: 75000, originalPrice: 90000 },
+      { name: 'Single Pack', price: 5000, originalPrice: 7000 },
     ],
     badges: ['Bestseller', 'Original'],
   },
@@ -26,11 +24,9 @@ const featuredProducts = [
     name: 'SUKUNERGY Chocolate',
     slug: 'sukunergy-chocolate',
     description: 'Bar sukun dengan perpaduan cokelat premium yang lezat.',
-    image: '/images/products/chocolate.jpg',
+    image: '/images/products/sukunergy-chocolate.jpg',
     variants: [
-      { name: 'Single Pack', price: 16000, originalPrice: 19000 },
-      { name: 'Pack 3', price: 42000, originalPrice: 48000 },
-      { name: 'Pack 6', price: 78000, originalPrice: 95000 },
+      { name: 'Single Pack', price: 5000, originalPrice: 7000 },
     ],
     badges: ['Popular', 'Premium'],
   },
@@ -39,11 +35,9 @@ const featuredProducts = [
     name: 'SUKUNERGY Mixed Nuts',
     slug: 'sukunergy-mixed-nuts',
     description: 'Kombinasi sukun dengan campuran kacang-kacangan premium.',
-    image: '/images/products/mixed-nuts.jpg',
+    image: '/images/products/sukunergy-mixed-nuts.jpg',
     variants: [
-      { name: 'Single Pack', price: 17000, originalPrice: 20000 },
-      { name: 'Pack 3', price: 45000, originalPrice: 51000 },
-      { name: 'Pack 6', price: 82000, originalPrice: 100000 },
+      { name: 'Single Pack', price: 5000, originalPrice: 7000 },
     ],
     badges: ['Crunchy', 'High Protein'],
   },
@@ -69,18 +63,11 @@ export function ProductsSection() {
             <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
               {/* Product Image */}
               <div className="relative aspect-square bg-gray-100 overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-white font-bold text-2xl">
-                        {product.name.split(' ')[1]?.[0] || 'S'}
-                      </span>
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      {product.name}
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
                 
                 {/* Badges */}
                 <div className="absolute top-3 left-3 flex flex-wrap gap-1">
@@ -104,7 +91,7 @@ export function ProductsSection() {
                   {product.description}
                 </p>
                 
-                {/* Price Range */}
+                {/* Price */}
                 <div className="mb-4">
                   <div className="flex items-center space-x-2">
                     <span className="text-lg font-bold text-primary">
@@ -117,11 +104,6 @@ export function ProductsSection() {
                     )}
                     <span className="text-xs text-gray-500">/ pack</span>
                   </div>
-                  {product.variants.length > 1 && (
-                    <div className="text-xs text-gray-500 mt-1">
-                      Mulai dari {formatPrice(product.variants[product.variants.length - 1].price)} untuk paket besar
-                    </div>
-                  )}
                 </div>
 
                 {/* Quick Stats */}
