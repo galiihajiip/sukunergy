@@ -54,8 +54,12 @@ export function Header() {
             href="/"
             className="flex items-center space-x-2 text-xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold">
-              S
+            <div className="w-8 h-8 flex items-center justify-center">
+              <img 
+                src="/favicon.ico" 
+                alt="SUKUNERGY Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className={cn(
               'transition-colors',

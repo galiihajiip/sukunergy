@@ -62,8 +62,12 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2 text-xl font-bold mb-4">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold">
-                S
+              <div className="w-8 h-8 flex items-center justify-center">
+                <img 
+                  src="/favicon.ico" 
+                  alt="SUKUNERGY Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span>SUKUNERGY</span>
             </Link>
